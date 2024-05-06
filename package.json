@@ -1,0 +1,18 @@
+{
+  "name": "allflow",
+  "version": "1.0.0",
+  "description": "Useful React components for logic in JSX.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Isaac Poole",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1"
+  }
+}
