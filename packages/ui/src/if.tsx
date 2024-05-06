@@ -1,17 +1,17 @@
 import type { ReactElement } from "react";
 
-export interface IfProps<T> {
+export interface IfProps<T, P> {
   /** The condition to evaluate */
   is: T;
   /** The element to render if the condition is true */
-  children: React.ReactNode;
+  children: P;
   /** The element to render if the condition is false */
-  el?: React.ReactNode;
+  el?: P;
 }
 
 /**
  * A React-friendly implementation of if/else logic.
  */
-export function If<T>({ is, children, el }: IfProps<T>): ReactElement {
+export function If<T, P>({ is, children, el }: IfProps<T, P>): ReactElement {
   return <>{is ? children : el}</>;
 }
