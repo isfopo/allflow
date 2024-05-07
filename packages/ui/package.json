@@ -4,11 +4,6 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
-    },
     "./if": {
       "types": "./src/if.tsx",
       "import": "./dist/if.mjs",
