@@ -5,8 +5,5 @@
   "fixed": [],
   "linked": [],
   "access": "public",
-  "updateInternalDependencies": "patch",
-  "ignore": [
-    "@acme/apps/docs"
-  ]
+  "updateInternalDependencies": "patch"
 }
