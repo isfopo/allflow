@@ -34,8 +34,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - run: npm ci --ignore-scripts
-
       - name: Build Packages
         run: pnpm run release
 
