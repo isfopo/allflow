@@ -38,6 +38,6 @@ jobs:
         run: pnpm run release
 
       - name: Publish Packages
-        run: pnpm publish
+        run: cd packages/ui && pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
