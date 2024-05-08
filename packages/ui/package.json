@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "sideEffects": false,
   "license": "MIT",
+  "repository": "https://github.com/isfopo/allflow",
   "exports": {
     "./if": {
       "types": "./src/if.tsx",
@@ -27,6 +28,7 @@
     "typescript": "^5.3.3"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   }
 }
