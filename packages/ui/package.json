@@ -2,6 +2,7 @@
   "name": "allflow",
   "version": "0.0.0",
   "sideEffects": false,
+  "author": "Isaac Poole",
   "license": "MIT",
   "repository": "https://github.com/isfopo/allflow",
   "exports": {
