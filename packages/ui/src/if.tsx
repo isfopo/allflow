@@ -12,6 +12,10 @@ export interface IfProps<T, P> {
 /**
  * A React-friendly implementation of if/else logic.
  */
-export function If<T, P>({ is, children, el }: IfProps<T, P>): ReactElement {
+export default function If<T, P>({
+  is,
+  children,
+  el,
+}: IfProps<T, P>): ReactElement {
   return <>{is ? children : el}</>;
 }
