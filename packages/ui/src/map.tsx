@@ -21,7 +21,7 @@ export interface MapProps<T>
 /**
  * Maps over an array of items, transforming them in to JSX. Use instead of .map()
  */
-export function ComponentMap<T>({
+export function Map<T>({
   items,
   element,
   separator,
