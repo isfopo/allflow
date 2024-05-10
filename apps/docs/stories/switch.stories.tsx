@@ -5,8 +5,9 @@ const meta: Meta<typeof Switch<"one" | "two" | "three">> = {
   component: Switch,
   argTypes: {
     test: {
+      description: "The value to test against",
       control: "radio",
-      options: ["one", "two", "three", null],
+      options: ["one", "two", "three"],
     },
   },
 };
