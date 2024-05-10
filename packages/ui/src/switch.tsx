@@ -1,6 +1,7 @@
-import type { ReactElement, PropsWithChildren } from "react";
+import type { ReactElement, DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface CaseProps<T> extends PropsWithChildren {
+export interface CaseProps<T>
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   /** The value to match. Not used directly in this component. */
   value: T;
 }
@@ -13,9 +14,13 @@ export function Case<T>({ children }: CaseProps<T>): ReactElement {
   return <>{children}</>;
 }
 
-export type DefaultProps = PropsWithChildren;
+export type DefaultProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
-export interface SwitchProps<T> {
+export interface SwitchProps<T>
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   /** The value to test */
   test: T;
   children: ReactElement<CaseProps<T>>[];
