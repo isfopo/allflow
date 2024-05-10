@@ -1,19 +1,5 @@
 import type { ReactElement, PropsWithChildren } from "react";
 
-export interface OptionProps<T> extends PropsWithChildren {
-  /** The value to match. Not used directly in this component. */
-  value?: T;
-  /** The default value to match. Not used directly in this component. */
-  default?: boolean;
-}
-
-/**
- * Base class for Case and Default components.
- */
-function Option<T>({ children }: OptionProps<T>): ReactElement {
-  return <>{children}</>;
-}
-
 export interface CaseProps<T> extends PropsWithChildren {
   /** The value to match. Not used directly in this component. */
   value: T;
@@ -23,24 +9,17 @@ export interface CaseProps<T> extends PropsWithChildren {
  * A React-friendly implementation of switch/case logic. This component is tightly coupled with the Switch component, which should be a parent of this component.
  * If you want to render a default case, use the `Default` component.
  */
-export function Case<T>({ children, value }: CaseProps<T>): ReactElement {
-  return <Option value={value}>{children}</Option>;
+export function Case<T>({ children }: CaseProps<T>): ReactElement {
+  return <>{children}</>;
 }
 
 export type DefaultProps = PropsWithChildren;
 
-/**
- * A React-friendly implementation of switch/case logic. This component is tightly coupled with the Switch component, which should be a parent of this component.
- * This is the default case.
- */
-export function Default({ children }: PropsWithChildren): ReactElement {
-  return <Option default>{children}</Option>;
-}
-
 export interface SwitchProps<T> {
   /** The value to test */
   test: T;
-  children: ReactElement<OptionProps<T>>[];
+  children: ReactElement<CaseProps<T>>[];
+  fallback?: ReactElement;
 }
 
 /**
@@ -49,9 +28,6 @@ export interface SwitchProps<T> {
 export const Switch = <T,>({
   test,
   children,
-}: SwitchProps<T>): ReactElement<CaseProps<T> | DefaultProps> | null => {
-  const defaultResult = children.find((child) => child.props.default) || null;
-  const result = children.find((child) => child.props.value === test);
-
-  return result || defaultResult;
-};
+  fallback,
+}: SwitchProps<T>): ReactElement | undefined =>
+  children.find((child) => child.props.value === test) ?? fallback;

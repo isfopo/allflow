@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Switch, Case, Default } from "@acme/ui/switch";
+import { Switch, Case } from "@acme/ui/switch";
 
 const meta: Meta<typeof Switch<"one" | "two" | "three">> = {
   component: Switch,
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof Switch>;
 
 export const Primary: Story = {
   render: (props) => (
-    <Switch {...props}>
+    <Switch {...props} fallback={<p>Default</p>}>
       <Case value={"one"}>
         <p>One</p>
       </Case>
@@ -27,9 +27,6 @@ export const Primary: Story = {
       <Case value={"three"}>
         <p>Three</p>
       </Case>
-      <Default>
-        <p>Default</p>
-      </Default>
     </Switch>
   ),
   name: "Switch",
