@@ -17,5 +17,30 @@ export const Primary: Story = {
       items={["one", "two", "three"]}
     />
   ),
-  name: "Map",
+};
+
+export const WithFilter: Story = {
+  render: (props) => (
+    <Map<string>
+      {...props}
+      element={(item) => <p>{item}</p>}
+      items={["one", "two", "three"]}
+    />
+  ),
+  args: {
+    filter: (item) => item !== "two",
+  },
+};
+
+export const WithSeparator: Story = {
+  render: (props) => (
+    <Map<string>
+      {...props}
+      element={(item) => <p>{item}</p>}
+      items={["one", "two", "three"]}
+    />
+  ),
+  args: {
+    separator: <hr />,
+  },
 };
