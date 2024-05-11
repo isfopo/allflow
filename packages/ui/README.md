@@ -28,4 +28,4 @@ you can use
 
 ## License
 
-Code and documentation copyright 2024 Isaac Poole. Code released under the [MIT License]().
+Code and documentation copyright 2024 Isaac Poole. Code released under the [MIT License](https://github.com/isfopo/allflow/tree/main/packages/ui/LICENSE).
