@@ -50,7 +50,7 @@ export const Breadcrumbs: Story = {
   render: (props) => (
     <Map<string>
       {...props}
-      className="map"
+      className="breadcrumbs"
       element={(item) => <p>{item}</p>}
       items={["Home", "Shop", "Checkout"]}
     />
