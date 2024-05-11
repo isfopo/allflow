@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Map } from "@acme/ui/map";
+import "../styles/global.css";
 
 const meta: Meta<typeof Map> = {
   component: Map,
@@ -42,5 +43,19 @@ export const WithSeparator: Story = {
   ),
   args: {
     separator: <hr />,
+  },
+};
+
+export const Breadcrumbs: Story = {
+  render: (props) => (
+    <Map<string>
+      {...props}
+      className="map"
+      element={(item) => <p>{item}</p>}
+      items={["Home", "Shop", "Checkout"]}
+    />
+  ),
+  args: {
+    separator: ">",
   },
 };
