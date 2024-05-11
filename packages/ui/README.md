@@ -24,7 +24,9 @@ you can use
 - Install with yarn: `yarn add allflow`
 - Install with pnpm: `pnpm add allflow`
 
-## Usage
+## Contributing
+
+See [Github Repository](https://github.com/isfopo/allflow/blob/main/README.md).
 
 ## License
 
