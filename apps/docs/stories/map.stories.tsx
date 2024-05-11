@@ -56,6 +56,6 @@ export const Breadcrumbs: Story = {
     />
   ),
   args: {
-    separator: ">",
+    separator: <p>{">"}</p>,
   },
 };
