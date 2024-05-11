@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, HTMLAttributes, ReactElement } from "react";
 import { Fragment } from "react";
 
 export interface ElementContext {
@@ -11,11 +11,11 @@ export interface MapProps<T>
   /** array of items to be transformed */
   items: T[];
   /** transformation function for each item */
-  element: (item: T, context?: ElementContext) => JSX.Element;
+  element: (item: T, context?: ElementContext) => ReactElement;
   /** optional filter function for items */
   filter?: (item: T) => boolean;
   /** optional separator between items */
-  separator?: JSX.Element | string;
+  separator?: ReactElement | string;
 }
 
 /**
@@ -27,7 +27,7 @@ export function Map<T>({
   separator,
   filter = () => true,
   ...props
-}: MapProps<T>): JSX.Element {
+}: MapProps<T>): ReactElement {
   return (
     <div {...props}>
       {items.filter(filter).map((item, key) => {
