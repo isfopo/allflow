@@ -19,13 +19,13 @@ type Story = StoryObj<typeof Switch>;
 export const Primary: Story = {
   render: (props) => (
     <Switch {...props} fallback={<p>Default</p>}>
-      <Case value={"one"}>
+      <Case value="one">
         <p>One</p>
       </Case>
-      <Case value={"two"}>
+      <Case value="two">
         <p>Two</p>
       </Case>
-      <Case value={"three"}>
+      <Case value="three">
         <p>Three</p>
       </Case>
     </Switch>
