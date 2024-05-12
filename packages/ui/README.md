@@ -5,9 +5,11 @@ Allflow is a set of utilities for writing clean and easy to read JSX. It provide
 For example, instead of using a chaining conditional operator like:
 
 ```jsx
-{
-  isTrue && <p>Hello</p>;
-}
+<>
+  {
+    isTrue && <p>Hello</p>;
+  }
+</>
 ```
 
 you can use
