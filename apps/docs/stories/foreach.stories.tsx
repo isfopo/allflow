@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Map } from "@acme/ui/map";
+import { ForEach } from "@acme/ui/foreach";
 import "../styles/global.css";
 
-const meta: Meta<typeof Map> = {
-  component: Map,
+const meta: Meta<typeof ForEach> = {
+  component: ForEach,
   argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Map>;
+type Story = StoryObj<typeof ForEach>;
 
 export const Primary: Story = {
   render: () => (
-    <Map<string>
+    <ForEach<string>
       element={(item) => <p>{item}</p>}
       items={["one", "two", "three"]}
     />
@@ -22,7 +22,7 @@ export const Primary: Story = {
 
 export const WithFilter: Story = {
   render: (props) => (
-    <Map<string>
+    <ForEach<string>
       {...props}
       element={(item) => <p>{item}</p>}
       items={["one", "two", "three"]}
@@ -35,7 +35,7 @@ export const WithFilter: Story = {
 
 export const WithSeparator: Story = {
   render: (props) => (
-    <Map<string>
+    <ForEach<string>
       {...props}
       element={(item) => <p>{item}</p>}
       items={["one", "two", "three"]}
@@ -48,7 +48,7 @@ export const WithSeparator: Story = {
 
 export const Breadcrumbs: Story = {
   render: (props) => (
-    <Map<string>
+    <ForEach<string>
       {...props}
       className="breadcrumbs"
       element={(item) => <p>{item}</p>}

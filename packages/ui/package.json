@@ -16,10 +16,10 @@
       "import": "./dist/switch.mjs",
       "require": "./dist/switch.js"
     },
-    "./map": {
-      "types": "./src/map.tsx",
-      "import": "./dist/map.mjs",
-      "require": "./dist/map.js"
+    "./foreach": {
+      "types": "./src/foreach.tsx",
+      "import": "./dist/foreach.mjs",
+      "require": "./dist/foreach.js"
     }
   },
   "scripts": {
