@@ -6,7 +6,7 @@ export interface ElementContext {
   isLast: boolean;
 }
 
-export interface MapProps<T>
+export interface ForEachProps<T>
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   /** array of items to be transformed */
   items: T[];
@@ -21,13 +21,13 @@ export interface MapProps<T>
 /**
  * Maps over an array of items, transforming them in to JSX. Use instead of .map()
  */
-export function Map<T>({
+export function ForEach<T>({
   items,
   element,
   separator,
   filter = () => true,
   ...props
-}: MapProps<T>): ReactElement {
+}: ForEachProps<T>): ReactElement {
   return (
     <div {...props}>
       {items.filter(filter).map((item, key) => {
