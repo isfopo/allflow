@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import { Fragment } from "react";
+import If from "./if";
 
 export interface ElementContext {
   isFirst: boolean;
@@ -34,7 +35,9 @@ export function ForEach<T>({
 
         return (
           <Fragment key={key}>
-            {Boolean(separator) && !isFirst && <>{separator}</>}
+            <If is={Boolean(separator) && !isFirst}>
+              <>{separator}</>
+            </If>
             <>{element(item, { isFirst, isLast })}</>
           </Fragment>
         );
