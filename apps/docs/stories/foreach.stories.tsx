@@ -48,12 +48,13 @@ export const WithSeparator: Story = {
 
 export const Breadcrumbs: Story = {
   render: (props) => (
-    <ForEach<string>
-      {...props}
-      className="breadcrumbs"
-      element={(item) => <p>{item}</p>}
-      items={["Home", "Shop", "Checkout"]}
-    />
+    <div className="breadcrumbs">
+      <ForEach<string>
+        {...props}
+        element={(item) => <p>{item}</p>}
+        items={["Home", "Shop", "Checkout"]}
+      />
+    </div>
   ),
   args: {
     separator: <p>{">"}</p>,
