@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, HTMLAttributes, ReactElement } from "react";
+import type { ReactElement } from "react";
 import { Fragment } from "react";
 
 export interface ElementContext {
