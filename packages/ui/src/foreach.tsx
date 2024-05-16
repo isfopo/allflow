@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Fragment } from "react";
-import If from "./if";
+import { If } from "./if";
 
 export interface ElementContext {
   isFirst: boolean;
