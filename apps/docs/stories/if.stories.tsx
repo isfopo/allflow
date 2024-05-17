@@ -26,7 +26,7 @@ export const Basic: Story = {
   },
 };
 
-export const Else: Story = {
+export const WithNot: Story = {
   render: (props) => (
     <If {...props}>
       <p>True</p>
@@ -35,12 +35,38 @@ export const Else: Story = {
       </Not>
     </If>
   ),
-  name: "If",
   args: {
     is: true,
   },
   argTypes: {
     is: {
+      control: { type: "boolean" },
+    },
+  },
+};
+
+export const WithOverride: Story = {
+  render: (props) => (
+    <If {...props}>
+      <p>True</p>
+      <Not>
+        <p>False</p>
+      </Not>
+    </If>
+  ),
+  args: {
+    is: true,
+    override: true,
+    useOverride: true,
+  },
+  argTypes: {
+    is: {
+      control: { type: "boolean" },
+    },
+    override: {
+      control: { type: "boolean" },
+    },
+    useOverride: {
       control: { type: "boolean" },
     },
   },
