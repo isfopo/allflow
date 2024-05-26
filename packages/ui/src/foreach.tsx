@@ -4,6 +4,7 @@ import { If } from "./if";
 
 export interface ElementContext {
   first: boolean;
+  middle: boolean;
   last: boolean;
 }
 
@@ -32,13 +33,14 @@ export function ForEach<T>({
       {of.filter(filter).map((item, key) => {
         const first = key === 0;
         const last = key === of.length - 1;
+        const middle = !first && !last;
 
         return (
           <Fragment key={key}>
             <If is={Boolean(separator) && !first}>
               <>{separator}</>
             </If>
-            <>{element(item, { first, last })}</>
+            <>{element(item, { first, middle, last })}</>
           </Fragment>
         );
       })}
