@@ -37,7 +37,7 @@ export const WithSeparator: Story = {
     </ForEach>
   ),
   args: {
-    separator: <hr />,
+    divider: <hr />,
   },
 };
 
@@ -50,6 +50,6 @@ export const Breadcrumbs: Story = {
     </div>
   ),
   args: {
-    separator: ">",
+    divider: ">",
   },
 };
