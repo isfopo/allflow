@@ -17,6 +17,8 @@ export interface ForEachProps<T> {
   filter?: (item: T) => boolean;
   /** optional divider between items */
   divider?: ReactElement | string;
+  /** optional slice of items to be transformed */
+  slice?: { start?: number; end?: number };
 }
 
 /**
@@ -27,23 +29,27 @@ export function ForEach<T>({
   children,
   divider,
   filter = () => true,
+  slice = { start: 0, end: of.length },
 }: ForEachProps<T>): ReactElement {
   return (
     <>
-      {of.filter(filter).map((item, key) => {
-        const first = key === 0;
-        const last = key === of.length - 1;
-        const middle = !first && !last;
+      {of
+        .filter(filter)
+        .slice(slice.start, slice.end)
+        .map((item, key) => {
+          const first = key === 0;
+          const last = key === of.length - 1;
+          const middle = !first && !last;
 
-        return (
-          <Fragment key={key}>
-            <If is={Boolean(divider) && !first}>
-              <>{divider}</>
-            </If>
-            <>{children(item, { first, middle, last })}</>
-          </Fragment>
-        );
-      })}
+          return (
+            <Fragment key={key}>
+              <If is={Boolean(divider) && !first}>
+                <>{divider}</>
+              </If>
+              <>{children(item, { first, middle, last })}</>
+            </Fragment>
+          );
+        })}
     </>
   );
 }
