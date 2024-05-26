@@ -15,8 +15,8 @@ export interface ForEachProps<T> {
   children: (item: T, context?: ElementContext) => ReactElement;
   /** optional filter function for items */
   filter?: (item: T) => boolean;
-  /** optional separator between items */
-  separator?: ReactElement | string;
+  /** optional divider between items */
+  divider?: ReactElement | string;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface ForEachProps<T> {
 export function ForEach<T>({
   of,
   children,
-  separator,
+  divider,
   filter = () => true,
 }: ForEachProps<T>): ReactElement {
   return (
@@ -37,8 +37,8 @@ export function ForEach<T>({
 
         return (
           <Fragment key={key}>
-            <If is={Boolean(separator) && !first}>
-              <>{separator}</>
+            <If is={Boolean(divider) && !first}>
+              <>{divider}</>
             </If>
             <>{children(item, { first, middle, last })}</>
           </Fragment>
