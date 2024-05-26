@@ -9,7 +9,7 @@ export interface ElementContext {
 
 export interface ForEachProps<T> {
   /** array of items to be transformed */
-  items: T[];
+  of: T[];
   /** transformation function for each item */
   element: (item: T, context?: ElementContext) => ReactElement;
   /** optional filter function for items */
@@ -22,16 +22,16 @@ export interface ForEachProps<T> {
  * Maps over an array of items, transforming them in to JSX. Use instead of .map()
  */
 export function ForEach<T>({
-  items,
+  of,
   element,
   separator,
   filter = () => true,
 }: ForEachProps<T>): ReactElement {
   return (
     <>
-      {items.filter(filter).map((item, key) => {
+      {of.filter(filter).map((item, key) => {
         const first = key === 0;
-        const last = key === items.length - 1;
+        const last = key === of.length - 1;
 
         return (
           <Fragment key={key}>

@@ -15,7 +15,7 @@ export const Primary: Story = {
   render: () => (
     <ForEach<string>
       element={(item) => <p>{item}</p>}
-      items={["one", "two", "three"]}
+      of={["one", "two", "three"]}
     />
   ),
 };
@@ -25,7 +25,7 @@ export const WithFilter: Story = {
     <ForEach<string>
       {...props}
       element={(item) => <p>{item}</p>}
-      items={["one", "two", "three"]}
+      of={["one", "two", "three"]}
     />
   ),
   args: {
@@ -38,7 +38,7 @@ export const WithSeparator: Story = {
     <ForEach<string>
       {...props}
       element={(item) => <p>{item}</p>}
-      items={["one", "two", "three"]}
+      of={["one", "two", "three"]}
     />
   ),
   args: {
@@ -52,7 +52,7 @@ export const Breadcrumbs: Story = {
       <ForEach<string>
         {...props}
         element={(item) => <p>{item}</p>}
-        items={["Home", "Shop", "Checkout"]}
+        of={["Home", "Shop", "Checkout"]}
       />
     </div>
   ),
