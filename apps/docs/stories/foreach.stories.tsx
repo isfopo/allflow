@@ -13,20 +13,17 @@ type Story = StoryObj<typeof ForEach>;
 
 export const Primary: Story = {
   render: () => (
-    <ForEach<string>
-      element={(item) => <p>{item}</p>}
-      of={["one", "two", "three"]}
-    />
+    <ForEach<string> of={["one", "two", "three"]}>
+      {(item) => <p>{item}</p>}
+    </ForEach>
   ),
 };
 
 export const WithFilter: Story = {
   render: (props) => (
-    <ForEach<string>
-      {...props}
-      element={(item) => <p>{item}</p>}
-      of={["one", "two", "three"]}
-    />
+    <ForEach<string> {...props} of={["one", "two", "three"]}>
+      {(item) => <p>{item}</p>}
+    </ForEach>
   ),
   args: {
     filter: (item) => item !== "two",
@@ -35,11 +32,9 @@ export const WithFilter: Story = {
 
 export const WithSeparator: Story = {
   render: (props) => (
-    <ForEach<string>
-      {...props}
-      element={(item) => <p>{item}</p>}
-      of={["one", "two", "three"]}
-    />
+    <ForEach<string> {...props} of={["one", "two", "three"]}>
+      {(item) => <p>{item}</p>}
+    </ForEach>
   ),
   args: {
     separator: <hr />,
@@ -49,11 +44,9 @@ export const WithSeparator: Story = {
 export const Breadcrumbs: Story = {
   render: (props) => (
     <div className="breadcrumbs">
-      <ForEach<string>
-        {...props}
-        element={(item) => <p>{item}</p>}
-        of={["Home", "Shop", "Checkout"]}
-      />
+      <ForEach<string> {...props} of={["Home", "Shop", "Checkout"]}>
+        {(item) => <p>{item}</p>}
+      </ForEach>
     </div>
   ),
   args: {

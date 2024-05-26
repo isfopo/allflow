@@ -12,7 +12,7 @@ export interface ForEachProps<T> {
   /** array of items to be transformed */
   of: T[];
   /** transformation function for each item */
-  element: (item: T, context?: ElementContext) => ReactElement;
+  children: (item: T, context?: ElementContext) => ReactElement;
   /** optional filter function for items */
   filter?: (item: T) => boolean;
   /** optional separator between items */
@@ -24,7 +24,7 @@ export interface ForEachProps<T> {
  */
 export function ForEach<T>({
   of,
-  element,
+  children,
   separator,
   filter = () => true,
 }: ForEachProps<T>): ReactElement {
@@ -40,7 +40,7 @@ export function ForEach<T>({
             <If is={Boolean(separator) && !first}>
               <>{separator}</>
             </If>
-            <>{element(item, { first, middle, last })}</>
+            <>{children(item, { first, middle, last })}</>
           </Fragment>
         );
       })}
