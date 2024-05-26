@@ -3,8 +3,8 @@ import { Fragment } from "react";
 import { If } from "./if";
 
 export interface ElementContext {
-  isFirst: boolean;
-  isLast: boolean;
+  first: boolean;
+  last: boolean;
 }
 
 export interface ForEachProps<T> {
@@ -30,15 +30,15 @@ export function ForEach<T>({
   return (
     <>
       {items.filter(filter).map((item, key) => {
-        const isFirst = key === 0;
-        const isLast = key === items.length - 1;
+        const first = key === 0;
+        const last = key === items.length - 1;
 
         return (
           <Fragment key={key}>
-            <If is={Boolean(separator) && !isFirst}>
+            <If is={Boolean(separator) && !first}>
               <>{separator}</>
             </If>
-            <>{element(item, { isFirst, isLast })}</>
+            <>{element(item, { first, last })}</>
           </Fragment>
         );
       })}
