@@ -50,6 +50,6 @@ export const Breadcrumbs: Story = {
     </div>
   ),
   args: {
-    separator: <p>{">"}</p>,
+    separator: ">",
   },
 };
