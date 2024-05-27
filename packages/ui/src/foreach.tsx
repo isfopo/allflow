@@ -3,8 +3,11 @@ import { Fragment } from "react";
 import { If } from "./if";
 
 export interface ElementContext {
+  /** true if the element is the first in the array */
   first: boolean;
+  /** true if the element is the middle in the array */
   middle: boolean;
+  /** true if the element is the last in the array */
   last: boolean;
 }
 
