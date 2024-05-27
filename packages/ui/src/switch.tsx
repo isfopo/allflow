@@ -18,8 +18,9 @@ export type DefaultProps = PropsWithChildren;
 export interface SwitchProps<T> {
   /** The value to test */
   test: T;
-  children: ReactElement<CaseProps<T>>[];
+  /** The element to render if `test` is not matched */
   fallback?: ReactElement;
+  children: ReactElement<CaseProps<T>>[];
 }
 
 /**
