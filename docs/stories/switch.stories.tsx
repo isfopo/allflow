@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Switch, Case } from "@allflow/ui/switch";
+import { Switch, Case } from "allflow";
 
 const meta: Meta<typeof Switch<"one" | "two" | "three">> = {
   component: Switch,
