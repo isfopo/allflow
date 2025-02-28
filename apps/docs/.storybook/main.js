@@ -1,7 +1,7 @@
 import { dirname, join, resolve } from "path";
 
 function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, "package.json")));
+  return dirname(resolve(join(value, "package.json")));
 }
 
 const config = {
@@ -12,7 +12,8 @@ const config = {
     getAbsolutePath("@storybook/addon-docs"),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    framework: "@storybook/react-vite",
+    name: getAbsolutePath("../../node_modules/@storybook/react-vite"),
     options: {},
   },
 
