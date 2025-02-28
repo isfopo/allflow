@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { If, Not } from "@acme/ui/if";
+import { If, Not } from "@allflow/ui/if";
 
 const meta: Meta<typeof If> = {
   component: If,

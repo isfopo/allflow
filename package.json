@@ -13,6 +13,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "prettier": "^3.2.5",
-    "turbo": "latest"
-  }
+    "turbo": "^2.4.4"
+  },
+  "packageManager": "pnpm@7.14.1+sha1.12f02fae0a6a63a73e3b854657cd388cc1a84a07"
 }
