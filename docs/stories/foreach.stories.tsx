@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ForEach } from "@allflow/ui/foreach";
+import { ForEach } from "allflow/foreach";
 import "../styles/global.css";
 
 const meta: Meta<typeof ForEach> = {

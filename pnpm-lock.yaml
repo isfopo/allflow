@@ -33,9 +33,6 @@ importers:
       '@storybook/addon-actions':
         specifier: ^8.0.10
         version: 8.6.2(storybook@8.6.2(prettier@3.5.2))
-      '@storybook/addon-docs':
-        specifier: ^8.0.10
-        version: 8.6.2(@types/react@18.3.18)(storybook@8.6.2(prettier@3.5.2))
       '@storybook/addon-essentials':
         specifier: ^8.0.10
         version: 8.6.2(@types/react@18.3.18)(storybook@8.6.2(prettier@3.5.2))
@@ -48,6 +45,12 @@ importers:
       '@storybook/react-vite':
         specifier: ^8.0.10
         version: 8.6.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.34.8)(storybook@8.6.2(prettier@3.5.2))(typescript@5.7.3)(vite@5.4.14)
+      '@types/react':
+        specifier: ^18.2.61
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.3.5(@types/react@18.3.18)
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.4(vite@5.4.14)
