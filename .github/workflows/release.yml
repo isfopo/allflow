@@ -14,21 +14,16 @@ permissions:
   id-token: write
 
 jobs:
-  release:
-    name: Release
+
+  build-package:
+    name: Build Package
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout Repo
         uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
-
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: "https://npm.pkg.github.com/"
-          scope: "@isfopo"
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -37,6 +32,20 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install
+      
+      - name: Build Package
+        run: cd package && pnpm run build
+
+  publish-npm:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@isfopo"
 
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
@@ -49,9 +58,6 @@ jobs:
       - name: Commit changes
         run: git push
 
-      - name: Build Package
-        run: cd package && pnpm run build
-
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
@@ -61,10 +67,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+  publish-jsr:
+    name: Publish to JSR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+
+      - name: Git Config
+        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
+
+      - name: "Automated Version Bump"
+        run: deno task version-bump
+
+      - name: Commit Changes
+        run: git push && git push --tags
+
       - name: Publish package to JSR
         run: cd package && npx jsr publish
-
-      # - name: Publish Github Package
-      #   run: cd package && pnpm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
