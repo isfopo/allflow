@@ -100,6 +100,9 @@ jobs:
         with:
           version: 8
 
+      - name: Install Dependencies
+        run: pnpm install    
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
 
