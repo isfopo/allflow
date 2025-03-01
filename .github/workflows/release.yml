@@ -28,6 +28,13 @@ jobs:
         with:
           default: minor
 
+      - name: Commit Version Bump
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package/package.json
+          git commit -m "chore: bump version [skip ci]" || echo "No changes to commit"
+
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
