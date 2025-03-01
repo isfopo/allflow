@@ -40,6 +40,14 @@ jobs:
           name: build-output
           path: package/dist 
 
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "package"
+        with:
+          default: minor
+
   publish-npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
@@ -49,6 +57,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -64,14 +73,6 @@ jobs:
           node-version: 20
           registry-url: "https://npm.pkg.github.com/"
           scope: "@isfopo"
-
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "package"
-        with:
-          default: minor
 
       - name: Commit changes
         run: git push && git push --tags
@@ -94,6 +95,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -109,18 +111,14 @@ jobs:
       - name: Git Config
         run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
 
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "package"
-          PACKAGE_FILENAME: "jsr.json"
-        with:
-          default: minor
 
+      - name: Get the release tag name
+        id: get_tag
+        run: |
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Commit Changes
         run: git push && git push --tags
 
       - name: Publish package to JSR
-        run: cd package && npx jsr publish
+        run: cd package && npx jsr publish --tag ${{ steps.get_tag.outputs.tag }}
