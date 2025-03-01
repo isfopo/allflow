@@ -34,11 +34,28 @@ jobs:
       - name: Build Package
         run: cd package && pnpm run build
 
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: package/dist 
+
   publish-npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
     needs: build-package
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
@@ -55,7 +72,7 @@ jobs:
           default: minor
 
       - name: Commit changes
-        run: git push
+        run: it push && git push --tags
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -71,6 +88,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-package
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
 
