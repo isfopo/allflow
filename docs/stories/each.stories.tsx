@@ -1,29 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ForEach } from "allflow/foreach";
+import { Each } from "allflow/each";
 import "../styles/global.css";
 
-const meta: Meta<typeof ForEach> = {
-  component: ForEach,
+const meta: Meta<typeof Each> = {
+  component: Each,
   argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ForEach>;
+type Story = StoryObj<typeof Each>;
 
 export const Primary: Story = {
   render: () => (
-    <ForEach<string> of={["one", "two", "three"]}>
-      {(item) => <p>{item}</p>}
-    </ForEach>
+    <Each<string> of={["one", "two", "three"]}>{(item) => <p>{item}</p>}</Each>
   ),
 };
 
 export const WithFilter: Story = {
   render: (props) => (
-    <ForEach<string> {...props} of={["one", "two", "three"]}>
+    <Each<string> {...props} of={["one", "two", "three"]}>
       {(item) => <p>{item}</p>}
-    </ForEach>
+    </Each>
   ),
   args: {
     filter: (item) => item !== "two",
@@ -32,9 +30,9 @@ export const WithFilter: Story = {
 
 export const WithSeparator: Story = {
   render: (props) => (
-    <ForEach<string> {...props} of={["one", "two", "three"]}>
+    <Each<string> {...props} of={["one", "two", "three"]}>
       {(item) => <p>{item}</p>}
-    </ForEach>
+    </Each>
   ),
   args: {
     divider: <hr />,
@@ -44,9 +42,9 @@ export const WithSeparator: Story = {
 export const Breadcrumbs: Story = {
   render: (props) => (
     <div className="breadcrumbs">
-      <ForEach<string> {...props} of={["Home", "Shop", "Checkout"]}>
+      <Each<string> {...props} of={["Home", "Shop", "Checkout"]}>
         {(item) => <p>{item}</p>}
-      </ForEach>
+      </Each>
     </div>
   ),
   args: {

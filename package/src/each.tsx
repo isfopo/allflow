@@ -27,7 +27,7 @@ export interface ForEachProps<T> {
 /**
  * Maps over an array of items, transforming them in to JSX. Use instead of .map()
  */
-export function ForEach<T>({
+export function Each<T>({
   of,
   children,
   divider,
