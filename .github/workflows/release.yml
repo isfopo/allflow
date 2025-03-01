@@ -48,6 +48,14 @@ jobs:
         with:
           default: minor
 
+      - name: Commit changes
+        run: |
+          git add .
+          git config --global user.email "isaacpoolemusic+versionbot@gmail.com"
+          git config --global user.name "version-bump"
+          git commit -m "Bump version [skip ci]"
+          git push && git push --tags
+
   publish-npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
@@ -73,12 +81,6 @@ jobs:
           node-version: 20
           registry-url: "https://npm.pkg.github.com/"
           scope: "@isfopo"
-
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Bump version [skip ci]"
-          git push && git push --tags
 
       - name: Publish to npm
         run: cd package && pnpm publish
@@ -107,12 +109,6 @@ jobs:
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1
-
-      - name: Git Config
-        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
-
-      - name: Commit Changes
-        run: git push && git push --tags
 
       - name: Publish package to JSR
         run: cd package && npx jsr publish
