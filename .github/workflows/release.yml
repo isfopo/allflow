@@ -71,11 +71,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: "https://npm.pkg.github.com/"
+          # registry-url: "https://npm.pkg.github.com/"
           scope: "@isfopo"
 
       - name: Commit changes
-        run: git push && git push --tags
+        run: |
+          git add .
+          git commit -m "Bump version [skip ci]"
+          git push && git push --tags
 
       - name: Create Release Pull Request or Publish to npm
         run: cd package && pnpm publish

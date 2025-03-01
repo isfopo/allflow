@@ -1,5 +1,5 @@
 {
-  "name": "allflow",
+  "name": "@isfopo/allflow",
   "version": "0.6.0",
   "sideEffects": false,
   "author": "Isaac Poole",
