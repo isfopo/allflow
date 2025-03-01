@@ -40,7 +40,7 @@ jobs:
           name: build-output
           path: package/dist 
 
-      - name: "Automated Version Bump"
+      - name: "NPM Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,19 +48,13 @@ jobs:
         with:
           default: minor
 
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "package"
-          PACKAGE_FILENAME:  'jsr.json'
-        with:
-          default: minor
+      - name: "JSR Version Bump"
+        run: node package/utils/jsr-versioning.js
 
       - name: Git Config
-        run: git config user.name "version-bot" && git config user.email "isaacpoolemusic+bot@gmail.com"
+        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
 
-      - name: Push Changes
+      - name: Commit Changes
         run: git push && git push --tags
 
   publish-npm:
