@@ -49,6 +49,9 @@ jobs:
       - name: Commit changes
         run: git push
 
+      - name: Build Package
+        run: cd package && pnpm run build
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
@@ -59,7 +62,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish package to JSR
-        run: cd package && npx jsr publish
+        run:  npx jsr publish
 
       # - name: Publish Github Package
       #   run: cd package && pnpm publish
