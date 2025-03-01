@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Each } from "allflow/each";
+import { Each } from "allflow";
 import "../styles/global.css";
 
 const meta: Meta<typeof Each> = {

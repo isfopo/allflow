@@ -9,20 +9,10 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
-    "./if": {
-      "types": "./src/if.tsx",
-      "import": "./dist/if.mjs",
-      "require": "./dist/if.js"
-    },
-    "./switch": {
-      "types": "./src/switch.tsx",
-      "import": "./dist/switch.mjs",
-      "require": "./dist/switch.js"
-    },
-    "./each": {
-      "types": "./src/each.tsx",
-      "import": "./dist/each.mjs",
-      "require": "./dist/each.js"
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "scripts": {
