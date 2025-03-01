@@ -6,7 +6,7 @@ const jsr = require("../jsr.json");
 jsr.version = pkg.version;
 
 fs.writeFile(
-  "jsr.json",
+  "../jsr.json",
   JSON.stringify(jsr, null, 2),
   {
     encoding: "utf8",
@@ -17,6 +17,6 @@ fs.writeFile(
       console.error("error updating version", err);
       return;
     }
-    console.log("jsr.json version updated");
+    console.log("jsr.json version updated to " + jsr.version);
   }
 );
