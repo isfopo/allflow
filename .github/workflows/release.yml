@@ -62,7 +62,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish package to JSR
-        run:  npx jsr publish
+        run: cd package && npx jsr publish
 
       # - name: Publish Github Package
       #   run: cd package && pnpm publish
