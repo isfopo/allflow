@@ -1,6 +1,6 @@
 {
   "name": "allflow",
-  "version": "0.47.0",
+  "version": "0.1.0",
   "sideEffects": false,
   "author": "Isaac Poole",
   "license": "MIT",
@@ -19,8 +19,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "version-bump-jsr": "deno run -A --no-check https://deno.land/x/version_bump/cli.ts"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@types/react": "^18.2.61",

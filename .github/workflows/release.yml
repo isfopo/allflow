@@ -107,7 +107,14 @@ jobs:
         run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
 
       - name: "Automated Version Bump"
-        run: cd package && deno task version-bump-jsr
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "package"
+          PACKAGE_FILENAME: "jsr.json"
+        with:
+          default: minor
+
 
       - name: Commit Changes
         run: git push && git push --tags
