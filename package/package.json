@@ -19,7 +19,8 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "version-bump-jsr": "deno run -A https://deno.land/x/version_bump@1.1.0/cli.ts"
   },
   "devDependencies": {
     "@types/react": "^18.2.61",

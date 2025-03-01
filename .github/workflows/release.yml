@@ -71,7 +71,7 @@ jobs:
           default: minor
 
       - name: Commit changes
-        run: it push && git push --tags
+        run: git push && git push --tags
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -104,7 +104,7 @@ jobs:
         run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
 
       - name: "Automated Version Bump"
-        run: deno task version-bump
+        run: cd package && deno task version-bump-jsr
 
       - name: Commit Changes
         run: git push && git push --tags
