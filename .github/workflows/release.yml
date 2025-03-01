@@ -108,13 +108,8 @@ jobs:
       - name: Git Config
         run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
 
-      - name: Get the release tag name
-        id: get_tag
-        run: |
-          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-
       - name: Commit Changes
         run: git push && git push --tags
 
       - name: Publish package to JSR
-        run: cd package && npx jsr publish --tag ${{ steps.get_tag.outputs.tag }}
+        run: cd package && npx jsr publish
