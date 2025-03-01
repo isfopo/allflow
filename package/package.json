@@ -5,6 +5,9 @@
   "author": "Isaac Poole",
   "license": "MIT",
   "repository": "https://github.com/isfopo/allflow",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     "./if": {
       "types": "./src/if.tsx",

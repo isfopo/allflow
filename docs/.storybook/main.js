@@ -8,25 +8,7 @@ const config = {
     "@storybook/addon-docs",
   ],
   framework: "@storybook/react-vite",
-
   core: {},
-
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
-    return {
-      ...config,
-      define: { "process.env": {} },
-      // resolve: {
-      //   alias: [
-      //     {
-      //       find: "ui",
-      //       replacement: resolve(dirname(), "../../../packages/"),
-      //     },
-      //   ],
-      // },
-    };
-  },
-
   docs: {
     autodocs: true,
   },

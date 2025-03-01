@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Fragment } from "react";
-import { If } from "./if";
+import { If } from "./If~";
 
 export interface ElementContext {
   /** true if the element is the first in the array */
@@ -11,7 +11,7 @@ export interface ElementContext {
   last: boolean;
 }
 
-export interface ForEachProps<T> {
+export interface EachProps<T> {
   /** array of items to be transformed */
   of: T[];
   /** transformation function for each item */
@@ -33,7 +33,7 @@ export function Each<T>({
   divider,
   filter = () => true,
   slice = { start: 0, end: of.length },
-}: ForEachProps<T>): ReactElement {
+}: EachProps<T>): ReactElement {
   return (
     <>
       {of
