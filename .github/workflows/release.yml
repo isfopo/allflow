@@ -30,13 +30,6 @@ jobs:
         with:
           default: minor
 
-      - name: Commit Version Bump
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add package/package.json
-          git commit -m "chore: bump version [skip ci]" || echo "No changes to commit"
-
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
@@ -60,8 +53,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to GitHub Packages
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
