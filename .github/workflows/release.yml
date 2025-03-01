@@ -10,15 +10,12 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 permissions:
   contents: write
   deployments: write
+  packages: write
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # to create release (changesets/action)
-      pull-requests: write # to create pull request (changesets/action)
-      packages: write # to publish to npm (changesets/action)
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
