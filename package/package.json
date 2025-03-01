@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "@isfopo/allflow",
   "version": "0.6.0",
+=======
+  "name": "allflow",
+  "version": "0.7.0",
+>>>>>>> bc681f552f226d302e9c38b3c823b70be3fb0ff8
   "sideEffects": false,
   "author": "Isaac Poole",
   "license": "MIT",
