@@ -109,7 +109,7 @@ jobs:
         run: |
           git config user.name "version-bot"
           git config user.email "your-email+bot@gmail.com"
-          git add jsr.json
+          git add .
           git commit -m "chore: bump version [skip ci]"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
