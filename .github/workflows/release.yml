@@ -35,6 +35,14 @@ jobs:
       - name: Build Package
         run: cd package && pnpm run build
 
+      - name: "NPM Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "package"
+        with:
+          default: minor
+
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -60,20 +68,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install  
 
-      - name: Setup Node.js 20.x
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: "https://npm.pkg.github.com/"
           scope: "@isfopo"
-
-      - name: "NPM Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "package"
-        with:
-          default: minor
 
       - name: Publish to npm
         run: cd package && pnpm publish
