@@ -42,6 +42,21 @@ jobs:
           PACKAGEJSON_DIR: "package"
         with:
           default: minor
+          
+      - name: "JSR Version Bump"
+        run: node package/utils/jsr-versioning.js
+      
+      - name: Commit Version Bump
+        run: |
+          git config user.name "version-bot"
+          git config user.email "your-email+bot@gmail.com"
+          git add .
+          git commit -m "chore: bump version"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit Changes
+        run: git push && git push --tags
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
@@ -104,21 +119,6 @@ jobs:
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1
-
-      - name: "JSR Version Bump"
-        run: node package/utils/jsr-versioning.js
-      
-      - name: Commit Version Bump
-        run: |
-          git config user.name "version-bot"
-          git config user.email "your-email+bot@gmail.com"
-          git add .
-          git commit -m "chore: bump version"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit Changes
-        run: git push && git push --tags
 
       - name: Publish package to JSR
         run: cd package && npx jsr publish
