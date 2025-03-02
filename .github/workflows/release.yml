@@ -104,9 +104,15 @@ jobs:
 
       - name: "JSR Version Bump"
         run: node package/utils/jsr-versioning.js
-
-      - name: Git Config
-        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
+      
+      - name: Commit Version Bump
+        run: |
+          git config user.name "version-bot"
+          git config user.email "your-email+bot@gmail.com"
+          git add jsr.json
+          git commit -m "chore: bump version [skip ci]"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit Changes
         run: git push && git push --tags
