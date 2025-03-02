@@ -40,23 +40,6 @@ jobs:
           name: build-output
           path: package/dist 
 
-      - name: "NPM Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "package"
-        with:
-          default: minor
-
-      - name: "JSR Version Bump"
-        run: node package/utils/jsr-versioning.js
-
-      - name: Git Config
-        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
-
-      - name: Commit Changes
-        run: git push && git push --tags
-
   publish-npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
@@ -82,6 +65,14 @@ jobs:
           node-version: 20
           registry-url: "https://npm.pkg.github.com/"
           scope: "@isfopo"
+
+      - name: "NPM Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "package"
+        with:
+          default: minor
 
       - name: Publish to npm
         run: cd package && pnpm publish
@@ -110,6 +101,15 @@ jobs:
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1
+
+      - name: "JSR Version Bump"
+        run: node package/utils/jsr-versioning.js
+
+      - name: Git Config
+        run: git config user.name "version-bot" && git config user.email "your-email+bot@gmail.com"
+
+      - name: Commit Changes
+        run: git push && git push --tags
 
       - name: Publish package to JSR
         run: cd package && npx jsr publish
